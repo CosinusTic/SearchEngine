@@ -1,12 +1,11 @@
 # rust_web_scraper
 
-
+-> Prerequisites
+rustc, cargo, rustup
 
 ## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Once the repository is cloned, run the project by typing `cargo run` (or `cargo build` if you just want to compile it without executing it)
 
 ## Add your files
 
