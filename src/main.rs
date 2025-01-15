@@ -21,13 +21,49 @@ fn simple_scraping_prog() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
+pub struct CLIArgs{
+    url: String,
+    crawling_depth: i32,
+}
+
+impl CLIArgs {
+    pub fn new(args: Vec<String>) -> Option<CLIArgs> {
+        if args[0].is_empty() || args[1].is_empty() {
+            return None;
+        }
+
+        Some(CLIArgs {
+            url: String::from(&args[1]),
+            crawling_depth: args[2].parse::<i32>().unwrap(),
+        })
+    }
+}
+
+
 fn main() {
     let url_string = String::from("http://www.example.com");
     let score = 10;
 
+    let raw: Vec<String> = std::env::args().collect();
+    if let Some(parsed_args) = CLIArgs::new(raw) {
+        println!("Arguments parsed: url={:?}, depth={:?}", parsed_args.url, parsed_args.crawling_depth);
+    }
+    else {
+        println!("Arguments passed are of the wrong kind");
+    }
     if let Some(url) = Url::new(url_string, score) {
         url.print_url(); 
     } else {
         println!("Invalid URL");
     }
+
+    let out = simple_scraping_prog();
+
+
+    match out {
+
+        Ok(out) => println!("Successfully retrieved html elements, returned"),
+        Err(out) => println!("Failed to retrieve html elelents"),
+    };
 }
+

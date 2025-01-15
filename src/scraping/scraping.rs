@@ -2,7 +2,7 @@ use scraper::{Html, Selector};
 use std::error::Error;
 
 pub fn scrape_html_element_in_url(url: &str, html_el: &str) -> Result<Vec<String>, Box<dyn Error>> {
-    let mut elements: Vec<String> = Vec::new();
+    let mut elements: Vec<String> = Vec::<String>::new();
     let response = reqwest::blocking::get(url)?;
     let html = response.text()?;
     let document = Html::parse_document(&html);

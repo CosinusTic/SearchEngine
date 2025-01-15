@@ -5,16 +5,14 @@ pub struct Url {
 
 impl Url
 {
-    pub fn new(url: String, score: i32) -> Option<Url>
-    {
-        if !url.contains("http") || !url.contains("www")
-        {
+    pub fn new(url: String, score: i32) -> Option<Url> {
+        if !url.contains("http") || !url.contains("www") {
             return None;
         }
         
         Some(Url {
-            url: url,
-            score: score
+            url,
+            score
         })
     }
 

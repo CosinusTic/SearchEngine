@@ -4,6 +4,5 @@ pub fn get_user_input(prompt: &str) -> String {
     print!("{}", prompt);
     let _ = stdout().flush();
     stdin().read_line(&mut s).expect("Please enter a correct string");
-
     s
 }
