@@ -20,4 +20,4 @@
 - Parallelization (use tokio or rayon) to parallelize scraping and matching operations
 - Results caching
 
-
+Graph lib: EGUI Graph (graph lib rust)

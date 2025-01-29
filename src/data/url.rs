@@ -20,3 +20,21 @@ impl Url
         println!("url: {}, score: {}", self.url, self.score);
     }
 }
+
+pub struct CLIArgs{
+    pub url: String,
+    pub crawling_depth: i32,
+}
+
+impl CLIArgs {
+    pub fn new(args: Vec<String>) -> Option<CLIArgs> {
+        if args[0].is_empty() || args[1].is_empty() {
+            return None;
+        }
+
+        Some(CLIArgs {
+            url: String::from(&args[1]),
+            crawling_depth: args[2].parse::<i32>().unwrap(),
+        })
+    }
+}
