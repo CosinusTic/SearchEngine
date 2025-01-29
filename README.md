@@ -2,6 +2,7 @@
 
 ## PHASE 1: Web crawling
 - From a small base of urls, recursively visit urls in pages and collect them
+TODO: still need to add to a url base
 - Store them in a .txt file which will then serve as base (a small "internet")
 
 ## PHASE 1: Basic URL matching
