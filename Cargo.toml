@@ -1,8 +1,7 @@
-[package]
-name = "web_scraper"
-version = "0.1.0"
-edition = "2021"
+[workspace]
+members = ["crawler", "search", "common"]
+resolver = "2"
 
-[dependencies]
+[workspace.dependencies]
 reqwest = { version = "0.12.7", features = ["blocking"] }
 scraper = "0.20.0"

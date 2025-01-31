@@ -1,0 +1,13 @@
+[package]
+name = "crawler"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+common = { path = "../common" }
+reqwest = { workspace = true }
+scraper = { workspace = true }
+
+[[bin]]
+name = "crawler"
+path = "src/main.rs"
