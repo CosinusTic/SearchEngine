@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 reqwest = { workspace = true }
 scraper = { workspace = true }
+signal-hook.workspace = true
 
 [lib]
 name = "common"
