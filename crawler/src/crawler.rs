@@ -1,8 +1,9 @@
+use common::scraping::{get_html, is_href_valid};
 use scraper::Selector;
 use std::collections::HashSet;
-use common::scraping::{ get_html, is_href_valid };
+use std::sync::mpsc::Sender;
 
-pub fn crawl(url: &str, lim: u8, visited: &mut HashSet<String>) {
+pub fn crawl(url: &str, lim: u8, visited: &mut HashSet<String>, sender: Sender<String>) {
     if lim >= 10 || visited.contains(url) {
         return;
     }
@@ -14,8 +15,13 @@ pub fn crawl(url: &str, lim: u8, visited: &mut HashSet<String>) {
             for anchor in html.select(&selector) {
                 if let Some(href) = anchor.value().attr("href") {
                     if is_href_valid(href) {
+                        let href_cloned = href.to_string();
                         println!("Href crawled: {}", href);
-                        crawl(href, lim + 1, visited);
+
+                        sender.send(href_cloned).expect("Failed to send");
+
+                        let sender = sender.clone();
+                        crawl(href, lim + 1, visited, sender);
                     }
                 }
             }
@@ -25,4 +31,3 @@ pub fn crawl(url: &str, lim: u8, visited: &mut HashSet<String>) {
         }
     }
 }
-
